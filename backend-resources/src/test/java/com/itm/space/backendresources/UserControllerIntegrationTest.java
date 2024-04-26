@@ -70,6 +70,7 @@ public class UserControllerIntegrationTest extends BaseIntegrationTest {
                 .andExpect(status().isNotFound());
     }
 
+
     @Test
     @WithMockUser(roles = "MODERATOR")
     public void getExistingUserByIdTestWithModerator() throws Exception {
@@ -79,7 +80,6 @@ public class UserControllerIntegrationTest extends BaseIntegrationTest {
                 .andExpect(status().isOk());
     }
 
-
     @Test
     @WithMockUser(roles = "USER")
     public void getExistingUserByIdTestWithUser() throws Exception {
@@ -87,6 +87,7 @@ public class UserControllerIntegrationTest extends BaseIntegrationTest {
         mvc.perform(MockMvcRequestBuilders.get("/api/users/" + existingUserId))
                 .andExpect(status().isForbidden());
     }
+
 
     @Test
     @WithMockUser(roles = "MODERATOR")
